@@ -17,8 +17,6 @@ export default {
 	data() {
 		return {
 			isResizing: false,
-			mouseX: 0,
-			mouseY: 0,
 			lastMovement: 0,
 			aspectRatio: 0
 		};
@@ -39,8 +37,6 @@ export default {
 			if (this.isDraggable) {
 				return;
 			}
-			this.mouseX = e.offsetX;
-			this.mouseY = e.offsetY;
 			this.isResizing = true;
 		});
 
@@ -49,10 +45,7 @@ export default {
 				return;
 			}
 
-			this.mouseX = e.offsetX;
-			this.mouseY = e.offsetY;
-
-			let movement = Math.sqrt(Math.pow(this.mouseY, 2) + Math.pow(this.mouseX, 2));
+			let movement = Math.sqrt(Math.pow(e.offsetY, 2) + Math.pow(e.offsetX, 2));
 
 			if (this.lastMovement > 0) {
 				if (movement > this.lastMovement) {
@@ -67,8 +60,6 @@ export default {
 
 		this.$refs.resizableImg.addEventListener('mouseup', (e) => {
 			this.isResizing = false;
-			this.mouseX = 0;
-			this.mouseY = 0;
 			this.lastMovement = 0;
 		});
 	},
