@@ -41,7 +41,7 @@ export default {
 		});
 
 		this.$refs.resizableImg.addEventListener('mousemove', (e) => {
-			if (this.isResizing === false) {
+			if (!this.isResizing) {
 				return;
 			}
 
